@@ -1,8 +1,6 @@
 package com.zw.admin.server.config;
 
-import java.io.File;
-import java.util.List;
-
+import com.zw.admin.server.page.table.PageTableArgumentResolver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +10,8 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.zw.admin.server.page.table.PageTableArgumentResolver;
+import java.io.File;
+import java.util.List;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
@@ -61,6 +60,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
 	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        System.out.println(ResourceUtils.FILE_URL_PREFIX + filesPath + File.separator +
+                "======================================================");
 		registry.addResourceHandler("/files/**")
 				.addResourceLocations(ResourceUtils.FILE_URL_PREFIX + filesPath + File.separator);
 	}
